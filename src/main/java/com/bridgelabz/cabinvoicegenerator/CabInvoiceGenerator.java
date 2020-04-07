@@ -28,4 +28,10 @@ public class CabInvoiceGenerator {
         totalFare = Math.max(totalFare, MINIMUM_FARE);
         return totalFare;
     }
+
+    //FUNCTION TO GET INVOICE SUMMARY
+    public InvoiceSummary getInvoiceSummary(Rides[] rides) {
+        double totalFare = getTotalFare(rides);
+        return new InvoiceSummary(rides.length, totalFare);
+    }
 }
