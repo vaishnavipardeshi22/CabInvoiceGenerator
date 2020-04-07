@@ -1,6 +1,7 @@
 package com.bridgelabz.cabinvoicegeneratortest;
 
 import com.bridgelabz.cabinvoicegenerator.CabInvoiceGenerator;
+import com.bridgelabz.cabinvoicegenerator.InvoiceSummary;
 import com.bridgelabz.cabinvoicegenerator.Rides;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,5 +27,13 @@ public class CabInvoiceGeneratorTest {
         Rides[] rides = {new Rides(26.05, 29), new Rides(12.39, 25)};
         double cabInvoiceGeneratorTotalFare = cabInvoiceGenerator.getTotalFare(rides);
         Assert.assertEquals(438.4, cabInvoiceGeneratorTotalFare, 0);
+    }
+
+    @Test
+    public void givenMultipleRides_WhenCalculated_ReturnInvoiceSummery() {
+        Rides[] rides = {new Rides(25.12, 40), new Rides(12.39, 25)};
+        InvoiceSummary invoiceSummary = cabInvoiceGenerator.getInvoiceSummary(rides);
+        InvoiceSummary summary = new InvoiceSummary(2, 440.1);
+        Assert.assertEquals(summary, invoiceSummary);
     }
 }
